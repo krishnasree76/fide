@@ -1,17 +1,20 @@
 import React from 'react';
 import { 
-  Network, 
-  UserPlus, 
-  Landmark, 
-  Users, 
-  MapPin, 
-  Briefcase, 
-  Mail, 
-  Phone, 
-  GraduationCap 
+  Network, UserPlus, Landmark, Users, MapPin, Briefcase, Mail, Phone, GraduationCap 
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Collaboration = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+  
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       
@@ -28,33 +31,33 @@ const Collaboration = () => {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 flex flex-col items-center text-center">
-            <div className="max-w-4xl">
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-8 tracking-tight">
+            <motion.div className="max-w-4xl" initial="hidden" animate="visible" variants={staggerContainer}>
+              <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl font-bold leading-tight mb-8 tracking-tight">
                 Building the infrastructure for <br className="hidden md:block"/><span className="text-accent">independent forensic justice.</span>
-              </h1>
-              <div className="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed font-light">
+              </motion.h1>
+              <motion.div variants={fadeInUp} className="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed font-light">
                 <p>The gap in India's forensic justice system will not be closed by a single institution.</p>
                 <p className="mt-4">We are seeking scientists, legal professionals, and strategic partners who understand what is at stake — and are prepared to safeguard scientific truth in our courts.</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
         </div>
       </section>
 
       {/* SECTION: INDIVIDUAL OPPORTUNITIES */}
-      <section className="py-20 bg-background border-b border-gray-200">
+      <section className="py-20 bg-background border-b border-gray-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            
-           <div className="flex items-center gap-4 mb-12 border-b border-gray-200 pb-6">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} className="flex items-center gap-4 mb-12 border-b border-gray-200 pb-6">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                  <UserPlus className="w-7 h-7 text-primary" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-primary tracking-tight">INDIVIDUAL OPPORTUNITIES</h2>
-           </div>
+           </motion.div>
            
-           <div className="space-y-12">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="space-y-12">
               
               {/* Profile 1 */}
-              <div className="bg-white rounded-sm border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-white rounded-sm border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                  <div className="bg-primary px-8 py-4">
                     <h3 className="text-xl font-bold text-white tracking-wide">Retired Forensic Scientists and Forensic Faculty</h3>
                  </div>
@@ -72,10 +75,10 @@ const Collaboration = () => {
                        <p className="text-text/80 text-lg">Per-case engagement fees with full legal and administrative support.</p>
                     </div>
                  </div>
-              </div>
+              </motion.div>
 
               {/* Profile 2 */}
-              <div className="bg-white rounded-sm border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-white rounded-sm border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                  <div className="bg-primary px-8 py-4">
                     <h3 className="text-xl font-bold text-white tracking-wide">State Representatives</h3>
                  </div>
@@ -89,10 +92,10 @@ const Collaboration = () => {
                        <p className="text-text/80 text-lg border-l-2 border-accent pl-4">Regional anchor for the Foundation's operations — building structured relationships with State Legal Services Authorities, managing the state-level case referral pipeline, and overseeing Court-Level Associates across the jurisdiction.</p>
                     </div>
                  </div>
-              </div>
+              </motion.div>
 
               {/* Profile 3 */}
-              <div className="bg-white rounded-sm border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-white rounded-sm border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                  <div className="bg-primary px-8 py-4">
                     <h3 className="text-xl font-bold text-white tracking-wide">Court-Level Case Associates</h3>
                  </div>
@@ -106,25 +109,25 @@ const Collaboration = () => {
                        <p className="text-text/80 text-lg border-l-2 border-accent pl-4">Monitoring cause lists for matters involving forensic evidence, establishing direct contact with defence counsel in relevant cases, and facilitating the secure and timely exchange of FSL reports and case documents for Foundation review.</p>
                     </div>
                  </div>
-              </div>
+              </motion.div>
 
-           </div>
+           </motion.div>
         </div>
       </section>
 
       {/* SECTION: INSTITUTIONAL PARTNERSHIPS */}
-      <section className="py-20 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white border-b border-gray-200 overflow-hidden">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            
-           <div className="flex items-center gap-4 mb-12 border-b border-gray-200 pb-6">
+           <motion.div variants={fadeInUp} className="flex items-center gap-4 mb-12 border-b border-gray-200 pb-6">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                  <Landmark className="w-7 h-7 text-primary" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-primary tracking-tight">INSTITUTIONAL PARTNERSHIPS</h2>
-           </div>
+           </motion.div>
            
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-background p-10 rounded-sm border border-gray-100 hover:shadow-sm transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-background p-10 rounded-sm border border-gray-100 hover:shadow-sm transition-shadow">
                  <div className="flex items-center gap-4 mb-4">
                     <Users className="w-8 h-8 text-accent" />
                     <h3 className="text-xl font-bold text-primary">Legal Aid NGOs & <br className="hidden sm:block"/>Undertrial Support Organisations</h3>
@@ -132,9 +135,9 @@ const Collaboration = () => {
                  <p className="text-text/80 text-lg leading-relaxed mt-4">
                     Formal MOUs enabling direct, zero-cost forensic reviews for your clients — bypassing complex referral chains. Co-delivered forensic literacy training available for your legal teams.
                  </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-background p-10 rounded-sm border border-gray-100 hover:shadow-sm transition-shadow">
+              <motion.div variants={fadeInUp} className="bg-background p-10 rounded-sm border border-gray-100 hover:shadow-sm transition-shadow">
                  <div className="flex items-center gap-4 mb-4">
                     <GraduationCap className="w-8 h-8 text-accent" />
                     <h3 className="text-xl font-bold text-primary">Law Schools & <br className="hidden sm:block"/>Legal Aid Clinics</h3>
@@ -142,25 +145,25 @@ const Collaboration = () => {
                  <p className="text-text/80 text-lg leading-relaxed mt-4">
                     Integration of forensic evidence training into clinical legal education curricula, expert panel access for student-handled cases, and joint research on forensic justice in India.
                  </p>
-              </div>
+              </motion.div>
            </div>
            
-        </div>
+        </motion.div>
       </section>
 
       {/* SECTION: EXPRESSION OF INTEREST FORM */}
-      <section className="py-24 bg-secondary relative text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-secondary relative text-white overflow-hidden">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
            
-           <div className="text-center mb-12">
+           <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-6">Expression of Interest</h2>
               <p className="text-xl text-gray-300 font-light border-b border-gray-700 pb-8">
                 We are seeking alignment, not volume. We want professionals who have spent careers inside laboratories and courts, and who know exactly where the systemic gaps lie.
               </p>
               <p className="mt-8 text-lg font-medium text-gray-200">Please provide the following details:</p>
-           </div>
+           </motion.div>
            
-           <div className="bg-white text-text rounded-sm shadow-xl p-8 md:p-12">
+           <motion.div variants={fadeInUp} className="bg-white text-text rounded-sm shadow-xl p-8 md:p-12">
               <form className="space-y-6">
                  <div>
                     <label className="block text-sm font-bold text-primary uppercase tracking-wide mb-2">Category</label>
@@ -215,7 +218,7 @@ const Collaboration = () => {
                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                               <Phone className="h-5 w-5 text-gray-400" />
                            </div>
-                           <input type="tel" className="w-full bg-background border border-gray-300 rounded-sm py-3 pl-10 pr-4 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent" placeholder="+91 XXXX XXXXXX" />
+                           <input type="tel" className="w-full bg-background border border-gray-300 rounded-sm py-3 pl-10 pr-4 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent" placeholder="+91 9490345123" />
                         </div>
                     </div>
                  </div>
@@ -236,7 +239,7 @@ const Collaboration = () => {
                  </div>
 
                  <div className="pt-4">
-                     <button type="submit" className="w-full bg-primary hover:bg-gray-800 text-white font-bold py-4 rounded-sm transition-colors text-lg flex items-center justify-center gap-2 uppercase tracking-wider">
+                     <button type="button" className="w-full bg-primary hover:bg-gray-800 text-white font-bold py-4 rounded-sm transition-colors text-lg flex items-center justify-center gap-2 uppercase tracking-wider">
                        Submit Expression of Interest
                      </button>
                  </div>
@@ -247,9 +250,9 @@ const Collaboration = () => {
                    Note: All expressions of interest are received in confidence and reviewed solely by Foundation leadership and responds within 7 working days.
                  </p>
               </div>
-           </div>
+           </motion.div>
            
-        </div>
+        </motion.div>
       </section>
       
     </div>

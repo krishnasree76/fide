@@ -1,60 +1,24 @@
 import React, { useState } from 'react';
 import { 
-  MapPin, 
-  Mail, 
-  Phone, 
-  Clock, 
-  MessageCircle,
-  FileUp,
-  ChevronDown,
-  ChevronUp
+  MapPin, Mail, Phone, Clock, MessageCircle, FileUp, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { FaLinkedin, FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [openFaq, setOpenFaq] = useState(null);
 
   const faqs = [
-    {
-      q: "Is Fide Forensic Foundation a government body?",
-      a: "No. We are an independent Section 8 not-for-profit. Our panel comprises retired senior government scientists (CFSL/SFSL) providing objective, third-party scientific scrutiny for the defense."
-    },
-    {
-      q: "Why should an official FSL report be challenged?",
-      a: "Under Indian law, an FSL report is an \"Expert Opinion,\" not an absolute fact. We audit the raw data, methodology, and chain of custody to identify errors or interpretive overreach that often go unnoticed."
-    },
-    {
-      q: "Is your Expert Opinion admissible in court?",
-      a: "Yes. Our reports and testimony are fully admissible under Section 45 of the Bharatiya Sakshya Adhiniyam (BSA), 2023, which allows the court to hear independent expert perspectives."
-    },
-    {
-      q: "At what stage should I involve the Foundation?",
-      a: "Immediately. Early involvement during the investigation or bail stage allows us to advise on summoning critical raw data (via Sec 94 BNSS) before it is lost or tampered with."
-    },
-    {
-      q: "Will your experts testify in person?",
-      a: "Yes. Our empanelled scientists are available for formal testimony, cross-examination, and depositions in any court across India, either in person or via video conferencing."
-    },
-    {
-      q: "Do you handle cases outside of Hyderabad?",
-      a: "Yes. We have a Pan-India reach. We provide forensic audits and support defense counsel across all 36 States and Union Territories, from Sessions Courts to the Supreme Court."
-    },
-    {
-      q: "Which forensic disciplines do you cover?",
-      a: "Our expertise spans all major areas: DNA & Biology, Digital/Cyber (mobile/cloud), Toxicology, Ballistics, Fingerprints, and Questioned Documents."
-    },
-    {
-      q: "How much do your services cost?",
-      a: "• Legal Aid: 100% Free for cases referred via NALSA, SLSA, DLSA, or eligible NGOs.\n• Private Matters: We charge a standard engagement fee that directly sustains our non-profit mission and legal aid mandate."
-    },
-    {
-      q: "What exactly will I receive after submitting a case?",
-      a: "You receive a comprehensive Technical Audit Report, a formal Expert Opinion, and a tactical Cross-Examination Roadmap to help counsel navigate the scientific evidence in court."
-    },
-    {
-      q: "How do I know if there are scientific grounds for a challenge?",
-      a: "Submit your FSL report through our portal. We provide a Preliminary Feasibility Assessment within 48 hours, letting you know transparently if there are valid scientific grounds for a challenge."
-    }
+    { q: "Is Fide Forensic Foundation a government body?", a: "No. We are an independent Section 8 not-for-profit. Our panel comprises retired senior government scientists (CFSL/SFSL) providing objective, third-party scientific scrutiny for the defense." },
+    { q: "Why should an official FSL report be challenged?", a: "Under Indian law, an FSL report is an \"Expert Opinion,\" not an absolute fact. We audit the raw data, methodology, and chain of custody to identify errors or interpretive overreach that often go unnoticed." },
+    { q: "Is your Expert Opinion admissible in court?", a: "Yes. Our reports and testimony are fully admissible under Section 45 of the Bharatiya Sakshya Adhiniyam (BSA), 2023, which allows the court to hear independent expert perspectives." },
+    { q: "At what stage should I involve the Foundation?", a: "Immediately. Early involvement during the investigation or bail stage allows us to advise on summoning critical raw data (via Sec 94 BNSS) before it is lost or tampered with." },
+    { q: "Will your experts testify in person?", a: "Yes. Our empanelled scientists are available for formal testimony, cross-examination, and depositions in any court across India, either in person or via video conferencing." },
+    { q: "Do you handle cases outside of Hyderabad?", a: "Yes. We have a Pan-India reach. We provide forensic audits and support defense counsel across all 36 States and Union Territories, from Sessions Courts to the Supreme Court." },
+    { q: "Which forensic disciplines do you cover?", a: "Our expertise spans all major areas: DNA & Biology, Digital/Cyber (mobile/cloud), Toxicology, Ballistics, Fingerprints, and Questioned Documents." },
+    { q: "How much do your services cost?", a: "• Legal Aid: 100% Free for cases referred via NALSA, SLSA, DLSA, or eligible NGOs.\n• Private Matters: We charge a standard engagement fee that directly sustains our non-profit mission and legal aid mandate." },
+    { q: "What exactly will I receive after submitting a case?", a: "You receive a comprehensive Technical Audit Report, a formal Expert Opinion, and a tactical Cross-Examination Roadmap to help counsel navigate the scientific evidence in court." },
+    { q: "How do I know if there are scientific grounds for a challenge?", a: "Submit your FSL report through our portal. We provide a Preliminary Feasibility Assessment within 48 hours, letting you know transparently if there are valid scientific grounds for a challenge." }
   ];
 
   const toggleFaq = (index) => {
@@ -65,33 +29,43 @@ const Contact = () => {
     }
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+  
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-text">
       
       {/* HEADER BAR */}
       <div className="bg-primary pt-16 pb-12 px-4 shadow-inner relative overflow-hidden">
-         <div className="absolute inset-0 z-0 opacity-10">
+         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.1 }} transition={{ duration: 1 }} className="absolute inset-0 z-0">
             <img src="/images/contact_hero.png" alt="Contact Background" className="w-full h-full object-cover mix-blend-screen" />
-         </div>
-         <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Contact & Case Submission</h1>
-            <div className="w-20 h-1 bg-accent"></div>
-         </div>
+         </motion.div>
+         <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+            <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Contact & Case Submission</motion.h1>
+            <motion.div variants={fadeInUp} className="w-20 h-1 bg-accent"></motion.div>
+         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
            
            {/* LEFT COLUMN: SUBMIT A CASE */}
-           <div>
-              <div className="mb-10">
+           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
+              <motion.div variants={fadeInUp} className="mb-10">
                  <h2 className="text-3xl font-bold text-primary mb-4 tracking-tight">Submit a Case</h2>
                  <p className="text-text/80 text-lg border-l-4 border-accent pl-5 py-2">
                    All case submissions are received as confidential professional engagements. <strong className="text-primary font-bold">We respond within 48 working hours.</strong>
                  </p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-8 md:p-10 rounded-sm shadow-sm border border-gray-200">
+              <motion.div variants={fadeInUp} className="bg-white p-8 md:p-10 rounded-sm shadow-sm border border-gray-200">
                  <form className="space-y-6">
                     <div>
                        <label className="block text-sm font-bold text-primary uppercase tracking-wide mb-2">Full Name</label>
@@ -185,10 +159,10 @@ const Contact = () => {
                     </div>
 
                  </form>
-              </div>
+              </motion.div>
 
               {/* WHATSAPP CTA */}
-              <div className="bg-white p-8 md:p-10 rounded-sm shadow-sm border border-gray-200 mt-8 text-center border-t-[6px] border-t-[#25D366]">
+              <motion.div variants={fadeInUp} className="bg-white p-8 md:p-10 rounded-sm shadow-sm border border-gray-200 mt-8 text-center border-t-[6px] border-t-[#25D366]">
                  <h3 className="text-2xl font-bold text-primary mb-6">Reach us directly.</h3>
                  <a 
                    href="https://wa.me/919490345123?text=Hello,%20I%20would%20like%20to%20submit%20a%20case%20/%20enquire%20about%20your%20services." 
@@ -198,16 +172,16 @@ const Contact = () => {
                  >
                    <MessageCircle className="w-6 h-6" /> Chat on WhatsApp
                  </a>
-              </div>
-           </div>
+              </motion.div>
+           </motion.div>
 
            {/* RIGHT COLUMN: FIND US & FAQ */}
            <div className="flex flex-col gap-12 pt-0 lg:pt-16">
               
               {/* FIND US */}
-              <div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}>
                  <h2 className="text-3xl font-bold text-primary mb-8 tracking-tight">Find Us</h2>
-                 <div className="bg-primary text-white p-10 md:p-12 rounded-sm shadow-md border-b-4 border-b-accent relative overflow-hidden">
+                 <div className="bg-primary text-white p-10 md:p-12 rounded-sm shadow-md border-b-4 border-b-accent relative overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="absolute -right-10 -bottom-10 opacity-10">
                        <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 4v4"/><path d="M12 16v4"/><path d="M4 12h4"/><path d="M16 12h4"/></svg>
                     </div>
@@ -237,26 +211,24 @@ const Contact = () => {
                        </div>
                     </div>
                  </div>
-              </div>
+              </motion.div>
 
               {/* FOLLOW US */}
-              <div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}>
                  <h3 className="text-sm font-bold text-gray-500 mb-6 uppercase tracking-widest border-b border-gray-200 pb-2">Follow Us</h3>
                  <div className="flex gap-4">
-                    <a href="#" className="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm group">
-                       <FaLinkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                    </a>
-                    <a href="#" className="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm group">
-                       <FaTwitter className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                    </a>
-                    <a href="#" className="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm group">
-                       <FaInstagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                    </a>
-                    <a href="#" className="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm group">
-                       <FaFacebook className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                    </a>
+                    {[
+                      { icon: <FaLinkedin className="w-6 h-6 group-hover:scale-110 transition-transform" /> },
+                      { icon: <FaTwitter className="w-6 h-6 group-hover:scale-110 transition-transform" /> },
+                      { icon: <FaInstagram className="w-6 h-6 group-hover:scale-110 transition-transform" /> },
+                      { icon: <FaFacebook className="w-6 h-6 group-hover:scale-110 transition-transform" /> }
+                    ].map((item, idx) => (
+                      <a key={idx} href="#" className="w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm group">
+                         {item.icon}
+                      </a>
+                    ))}
                  </div>
-              </div>
+              </motion.div>
 
            </div>
 
@@ -265,15 +237,15 @@ const Contact = () => {
 
       {/* FAQ SECTION */}
       <section className="bg-white py-24 border-t border-gray-200 relative overflow-hidden">
-         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <motion.div variants={fadeInUp} className="text-center mb-16">
                <h2 className="text-3xl md:text-5xl font-bold text-primary tracking-tight mb-6">Frequently Asked Questions</h2>
                <div className="w-16 h-1 bg-accent mx-auto"></div>
-            </div>
+            </motion.div>
 
-            <div className="space-y-4">
+            <motion.div variants={staggerContainer} className="space-y-4">
                {faqs.map((faq, index) => (
-                 <div key={index} className="border border-gray-200 rounded-sm overflow-hidden text-left bg-background shadow-sm hover:shadow-md transition-shadow">
+                 <motion.div variants={fadeInUp} key={index} className="border border-gray-200 rounded-sm overflow-hidden text-left bg-background shadow-sm hover:shadow-md transition-shadow">
                     <button 
                       className={`w-full px-6 md:px-8 py-5 md:py-6 flex justify-between items-center focus:outline-none transition-colors ${openFaq === index ? 'bg-primary text-white' : 'hover:bg-gray-50 text-primary'}`}
                       onClick={() => toggleFaq(index)}
@@ -284,14 +256,14 @@ const Contact = () => {
                        </span>
                     </button>
                     {openFaq === index && (
-                       <div className="px-6 md:px-8 pb-8 text-text/80 text-lg leading-relaxed whitespace-pre-line border-t border-gray-100 mt-2 pt-6 bg-white border-b-4 border-b-accent">
+                       <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="px-6 md:px-8 pb-8 text-text/80 text-lg leading-relaxed whitespace-pre-line border-t border-gray-100 mt-2 pt-6 bg-white border-b-4 border-b-accent">
                           {faq.a}
-                       </div>
+                       </motion.div>
                     )}
-                 </div>
+                 </motion.div>
                ))}
-            </div>
-         </div>
+            </motion.div>
+         </motion.div>
       </section>
       
     </div>
