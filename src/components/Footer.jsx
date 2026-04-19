@@ -50,7 +50,7 @@ const Footer = () => {
              </div>
              <div className="flex items-center gap-3 mb-3 text-gray-300">
                 <Phone className="w-5 h-5 text-accent" />
-                <span>+91 [Insert Number]</span>
+                <span>+91 9490345123</span>
              </div>
              <div className="flex items-start gap-3 mb-8 text-gray-300">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-1" />

@@ -123,7 +123,7 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                        <div>
                           <label className="block text-sm font-bold text-primary uppercase tracking-wide mb-2">Phone</label>
-                          <input type="tel" className="w-full bg-background border border-gray-300 rounded-sm py-3 px-4 text-text focus:outline-none focus:border-accent" placeholder="+91 XXXXX XXXXX" />
+                          <input type="tel" className="w-full bg-background border border-gray-300 rounded-sm py-3 px-4 text-text focus:outline-none focus:border-accent" placeholder="+91 9490345123" />
                        </div>
                        <div>
                           <label className="block text-sm font-bold text-primary uppercase tracking-wide mb-2">Email</label>
@@ -191,7 +191,7 @@ const Contact = () => {
               <div className="bg-white p-8 md:p-10 rounded-sm shadow-sm border border-gray-200 mt-8 text-center border-t-[6px] border-t-[#25D366]">
                  <h3 className="text-2xl font-bold text-primary mb-6">Reach us directly.</h3>
                  <a 
-                   href="https://wa.me/910000000000?text=Hello,%20I%20would%20like%20to%20submit%20a%20case%20/%20enquire%20about%20your%20services." 
+                   href="https://wa.me/919490345123?text=Hello,%20I%20would%20like%20to%20submit%20a%20case%20/%20enquire%20about%20your%20services." 
                    target="_blank" 
                    rel="noopener noreferrer"
                    className="inline-flex items-center justify-center w-full md:w-auto gap-3 bg-[#25D366] text-white px-8 py-4 rounded-sm font-bold text-lg hover:bg-[#128C7E] transition-colors shadow-sm"
@@ -226,7 +226,7 @@ const Contact = () => {
                        </div>
                        <div className="flex items-center gap-4">
                           <Phone className="w-7 h-7 text-accent flex-shrink-0" />
-                          <span className="text-gray-300 text-lg">+91 XXXXX XXXXX</span>
+                          <span className="text-gray-300 text-lg">+91 9490345123</span>
                        </div>
                        <div className="flex items-center gap-4 pt-8 border-t border-gray-700">
                           <Clock className="w-7 h-7 text-accent flex-shrink-0" />
